@@ -1,8 +1,10 @@
 Kko::Application.routes.draw do
 
+
   resources :languages do
     resources :flashcards do
       resources :vocabularies
+      resources :logs
     end
   end
   

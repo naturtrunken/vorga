@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start:</b>
+  <%= @log.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @log.end %>
+</p>
+
+
+<%= link_to 'Edit', edit_language_flashcard_log_path(@language, @flashcard, @log) %> |
+<%= link_to 'Back', language_flashcard_logs_path(@language, @flashcard) %>

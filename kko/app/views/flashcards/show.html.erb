@@ -13,6 +13,21 @@
 <hr/>
 
 <p>
+  <b>Logs:</b>
+  <ul>
+<% @flashcard.logs.each do |log| %>
+ <li><%= log.start %> &ndash; <%= log.end %>
+ (<%= link_to 'Edit', edit_language_flashcard_log_path(@language, @flashcard, log) %> |
+ <%= link_to 'Destroy', language_flashcard_log_path(@language, @flashcard, log), confirm: 'Are you sure?', method: :delete %>)</li>
+<% end %>
+  </ul>
+</p>
+
+<%= link_to 'New Log', new_language_flashcard_log_path(@language, @flashcard) %>
+
+<hr/>
+
+<p>
   <b>Vocabularies:</b>
   <ul>
 <% @flashcard.vocabularies.each do |vocabulary| %>
@@ -20,8 +35,6 @@
 <% end %>
   </ul>
 </p>
-
-
 
 <%= link_to 'Edit', edit_language_flashcard_path(@language, @flashcard) %> |
 <%= link_to 'Back', language_flashcards_path(@language) %>

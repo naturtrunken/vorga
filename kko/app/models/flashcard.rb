@@ -3,4 +3,5 @@ class Flashcard < ActiveRecord::Base
 	
 	belongs_to :language
 	has_many :vocabularies, dependent: :destroy
+	has_many :logs, dependent: :destroy
 end
