@@ -7,13 +7,15 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @flashcards.each do |flashcard| %>
   <tr>
     <td><%= flashcard.title %></td>
     <td><%= flashcard.desc %></td>
-    <td><%= link_to 'Show', flashcard %></td>
+    <td><%= link_to 'Show flashcart', flashcard %></td>
+    <td><%= link_to 'Show vocabularies in this flashcard', flashcard_vocabularies_path(flashcard) %></td>
     <td><%= link_to 'Edit', edit_flashcard_path(flashcard) %></td>
     <td><%= link_to 'Destroy', flashcard, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

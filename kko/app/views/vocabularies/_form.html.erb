@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= select('vocabulary', 'category_id', Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

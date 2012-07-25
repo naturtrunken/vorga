@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>ID:</b>
+  <%= @vocabulary.id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= Category.find(@vocabulary.category_id).name %>
+</p>
+
 
 <%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, @vocabulary) %> |
 <%= link_to 'Back', flashcard_vocabularies_path(@flashcard) %>
