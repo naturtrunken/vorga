@@ -10,6 +10,18 @@
   <%= @flashcard.desc %>
 </p>
 
+<hr/>
+
+<p>
+  <b>Vocabularies:</b>
+  <ul>
+<% @flashcard.vocabularies.each do |vocabulary| %>
+ <li><%= vocabulary.id %> <%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, vocabulary) %></li>
+<% end %>
+  </ul>
+</p>
+
+
 
 <%= link_to 'Edit', edit_flashcard_path(@flashcard) %> |
 <%= link_to 'Back', flashcards_path %>
