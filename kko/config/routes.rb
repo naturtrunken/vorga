@@ -1,5 +1,7 @@
 Kko::Application.routes.draw do
 
+  resources :categories
+
   resources :flashcards do
     resources :vocabularies
   end
