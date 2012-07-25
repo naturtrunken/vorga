@@ -1,0 +1,27 @@
+<h1>Listing lognotes</h1>
+
+<table>
+  <tr>
+    <th>Log</th>
+    <th>Vocabulary</th>
+    <th>Failed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lognotes.each do |lognote| %>
+  <tr>
+    <td><%= lognote.log_id %></td>
+    <td><%= lognote.vocabulary_id %></td>
+    <td><%= lognote.failed %></td>
+    <td><%= link_to 'Show', language_flashcard_log_lognote_path(@language, @flashcard, @log, @lognote) %></td>
+    <td><%= link_to 'Edit', edit_language_flashcard_log_lognote_path(@language, @flashcard, @log, lognote) %></td>
+    <td><%= link_to 'Destroy', language_flashcard_log_lognote_path(@language, @flashcard, @log, @lognote), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lognote', new_language_flashcard_log_lognote_path(@language, @flashcard, @log) %>

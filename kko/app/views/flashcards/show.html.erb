@@ -10,6 +10,9 @@
   <%= @flashcard.desc %>
 </p>
 
+<%= link_to 'Edit this flashcard', edit_language_flashcard_path(@language, @flashcard) %> |
+<%= link_to 'Back to all flashcards', language_flashcards_path(@language) %>
+
 <hr/>
 
 <p>
@@ -17,7 +20,8 @@
   <ul>
 <% @flashcard.logs.each do |log| %>
  <li><%= log.start %> &ndash; <%= log.end %>
- (<%= link_to 'Edit', edit_language_flashcard_log_path(@language, @flashcard, log) %> |
+ (<%= link_to 'Show', language_flashcard_log_path(@language, @flashcard, log) %> |
+ <%= link_to 'Edit', edit_language_flashcard_log_path(@language, @flashcard, log) %> |
  <%= link_to 'Destroy', language_flashcard_log_path(@language, @flashcard, log), confirm: 'Are you sure?', method: :delete %>)</li>
 <% end %>
   </ul>
@@ -31,10 +35,15 @@
   <b>Vocabularies:</b>
   <ul>
 <% @flashcard.vocabularies.each do |vocabulary| %>
- <li><%= vocabulary.id %> <%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %></li>
+ <li><%= vocabulary.id %>
+ <%= vocabulary.name %>
+ <%= vocabulary.translation %>
+ (<%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %> |
+ <%= link_to 'Destroy', language_flashcard_vocabulary_path(@language, @flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %>)</li>
 <% end %>
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_language_flashcard_path(@language, @flashcard) %> |
-<%= link_to 'Back', language_flashcards_path(@language) %>
+<%= link_to 'New Vocabulary', new_language_flashcard_vocabulary_path(@language, @flashcard) %>
+
+

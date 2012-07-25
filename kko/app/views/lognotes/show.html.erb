@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Vocabulary:</b>
+  <%= @lognote.vocabulary_id %>
+</p>
+
+<p>
+  <b>Failed:</b>
+  <%= @lognote.failed %>
+</p>
+
+
+<%= link_to 'Edit', edit_language_flashcard_log_lognote_path(@language, @flashcard, @log, @lognote) %> |
+<%= link_to 'Back', language_flashcard_log_path(@language, @flashcard, @log) %>

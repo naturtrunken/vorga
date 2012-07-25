@@ -1,0 +1,25 @@
+<%= form_for([@language, @flashcard, @log, @lognote]) do |f| %>
+  <% if @lognote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lognote.errors.count, "error") %> prohibited this lognote from being saved:</h2>
+
+      <ul>
+      <% @lognote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vocabulary_id %><br />
+    <%= select('lognote', 'vocabulary_id', @flashcard.vocabularies.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :failed %><br />
+    <%= f.number_field :failed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

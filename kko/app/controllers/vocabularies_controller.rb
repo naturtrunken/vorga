@@ -47,7 +47,7 @@ class VocabulariesController < ApplicationController
 
       if @vocabulary.save
         flash[:success] = 'Vocabulary was successfully created.'
-        redirect_to language_flashcard_vocabulary_path(@language, @flashcard, @vocabulary)
+        redirect_to language_flashcard_path(@language, @flashcard)
       else
         render "new"
       end
@@ -60,7 +60,7 @@ class VocabulariesController < ApplicationController
 
       if @vocabulary.update_attributes(params[:vocabulary])
         flash[:success] = 'Vocabulary was successfully updated.'
-        redirect_to language_flashcard_vocabulary_path(@language, @flashcard, @vocabulary)
+        redirect_to language_flashcard_path(@language, @flashcard)
       else
         render "edit"
       end
@@ -73,7 +73,7 @@ class VocabulariesController < ApplicationController
     @vocabulary.destroy
 	flash[:success] = 'Vocabulary destroyed'
 
-    redirect_to language_flashcard_vocabularies_path(@language, @flashcard)
+    redirect_to language_flashcard_path(@language, @flashcard)
   end
   
 private

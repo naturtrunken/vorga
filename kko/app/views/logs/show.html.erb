@@ -10,6 +10,23 @@
   <%= @log.end %>
 </p>
 
-
 <%= link_to 'Edit', edit_language_flashcard_log_path(@language, @flashcard, @log) %> |
-<%= link_to 'Back', language_flashcard_logs_path(@language, @flashcard) %>
+<%= link_to 'Back', language_flashcard_path(@language, @flashcard) %>
+
+
+<hr/>
+
+<p>
+  <b>Lognotes:</b>
+  <ul>
+<% @log.lognotes.each do |lognote| %>
+ <li><%= Vocabulary.find(lognote.vocabulary_id).name %>: <%= lognote.failed %>x failed
+ (<%= link_to 'Edit', edit_language_flashcard_log_lognote_path(@language, @flashcard, @log, lognote) %> |
+ <%= link_to 'Destroy', language_flashcard_log_lognote_path(@language, @flashcard, @log, lognote), confirm: 'Are you sure?', method: :delete %>)</li>
+<% end %>
+  </ul>
+</p>
+
+<%= link_to 'New Lognote', new_language_flashcard_log_lognote_path(@language, @flashcard, @log) %>
+
+
