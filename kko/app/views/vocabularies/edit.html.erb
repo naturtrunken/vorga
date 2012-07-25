@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @vocabulary %> |
-<%= link_to 'Back', vocabularies_path %>
+<%= link_to 'Show', flashcard_vocabulary_path(@flashcard, @vocabulary) %> |
+<%= link_to 'Back', flashcard_vocabularies_path(@flashcard) %>

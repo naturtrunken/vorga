@@ -1,4 +1,6 @@
 class VocabulariesController < ApplicationController
+  before_filter :get_flashcard
+
   # GET /vocabularies
   # GET /vocabularies.json
   def index
@@ -40,33 +42,27 @@ class VocabulariesController < ApplicationController
   # POST /vocabularies
   # POST /vocabularies.json
   def create
-    @vocabulary = Vocabulary.new(params[:vocabulary])
+    @vocabulary = @flashcard.vocabularies.build(params[:vocabulary])
 
-    respond_to do |format|
       if @vocabulary.save
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully created.' }
-        format.json { render json: @vocabulary, status: :created, location: @vocabulary }
+        flash[:success] = 'Vocabulary was successfully created.'
+        redirect_to flashcard_vocabulary_path(@flashcard, @vocabulary)
       else
-        format.html { render action: "new" }
-        format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
+        render "new"
       end
-    end
   end
 
   # PUT /vocabularies/1
   # PUT /vocabularies/1.json
   def update
-    @vocabulary = Vocabulary.find(params[:id])
+    @vocabulary = @flashcard.vocabularies.find(params[:id])
 
-    respond_to do |format|
       if @vocabulary.update_attributes(params[:vocabulary])
-        format.html { redirect_to @vocabulary, notice: 'Vocabulary was successfully updated.' }
-        format.json { head :no_content }
+        flash[:success] = 'Vocabulary was successfully updated.'
+        redirect_to flashcard_vocabulary_path(@flashcard, @vocabulary)
       else
-        format.html { render action: "edit" }
-        format.json { render json: @vocabulary.errors, status: :unprocessable_entity }
+        render "edit"
       end
-    end
   end
 
   # DELETE /vocabularies/1
@@ -74,10 +70,18 @@ class VocabulariesController < ApplicationController
   def destroy
     @vocabulary = Vocabulary.find(params[:id])
     @vocabulary.destroy
+	flash[:success] = 'Flashcard destroyed'
 
-    respond_to do |format|
-      format.html { redirect_to vocabularies_url }
-      format.json { head :no_content }
-    end
+    redirect_to flashcard_vocabularies_path(@flashcard)
   end
+  
+private
+
+  def get_flashcard
+  	@flashcard = Flashcard.find(params[:flashcard_id])
+  	if @flashcard.nil? then raise "No flashcard does exist for this vocabulary." end
+  end
+  
+  
+
 end

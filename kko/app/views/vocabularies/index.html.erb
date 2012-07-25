@@ -9,13 +9,13 @@
 
 <% @vocabularies.each do |vocabulary| %>
   <tr>
-    <td><%= link_to 'Show', vocabulary %></td>
-    <td><%= link_to 'Edit', edit_vocabulary_path(vocabulary) %></td>
-    <td><%= link_to 'Destroy', vocabulary, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', flashcard_vocabulary_path(@flashcard, vocabulary) %></td>
+    <td><%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, vocabulary) %></td>
+    <td><%= link_to 'Destroy', flashcard_vocabulary_path(@flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Vocabulary', new_vocabulary_path %>
+<%= link_to 'New Vocabulary', new_flashcard_vocabulary_path(@flashcard) %>
