@@ -5,6 +5,14 @@
   <%= @language.name %>
 </p>
 
+<p>
+  <b>Flashcards:</b>
+  <ul>
+<% @language.flashcards.each do |flashcard| %>
+ <li><%= link_to flashcard.title, language_flashcard_path(@language, flashcard) %></li>
+<% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_language_path(@language) %> |
 <%= link_to 'Back', languages_path %>
