@@ -1,4 +1,6 @@
 Kko::Application.routes.draw do
+  resources :vocabularies
+
   resources :flashcards
 
   # The priority is based upon order of creation:
