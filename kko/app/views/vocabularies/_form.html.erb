@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :translation %><br />
+    <%= f.text_field :translation %>
+  </div>  
+  <div class="field">
     <%= f.label :category %><br />
     <%= select('vocabulary', 'category_id', Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
   </div>

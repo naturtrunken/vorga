@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>ID</th>
+    <th>Name</th>
+    <th>Translation</th>
     <th>Category</th>
     <th></th>
     <th></th>
@@ -12,6 +14,8 @@
 <% @vocabularies.each do |vocabulary| %>
   <tr>
     <td><%= vocabulary.id %></td>
+    <td><%= vocabulary.name %></td>
+    <td><%= vocabulary.translation %></td>
     <td><% if vocabulary.category_id %>
     	<%= Category.find(vocabulary.category_id).name %>
     <% else %>

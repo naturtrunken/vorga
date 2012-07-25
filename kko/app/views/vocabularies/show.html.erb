@@ -6,6 +6,16 @@
 </p>
 
 <p>
+  <b>Name:</b>
+  <%= @vocabulary.name %>
+</p>
+
+<p>
+  <b>Translation:</b>
+  <%= @vocabulary.translation %>
+</p>
+
+<p>
   <b>Category:</b>
 <% if @vocabulary.category_id %>
     	<%= Category.find(@vocabulary.category_id).name %>
