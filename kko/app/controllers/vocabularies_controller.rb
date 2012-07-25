@@ -1,10 +1,11 @@
 class VocabulariesController < ApplicationController
+  before_filter :get_language
   before_filter :get_flashcard
-
+  
   # GET /vocabularies
   # GET /vocabularies.json
   def index
-    @vocabularies = Vocabulary.all
+    @vocabularies = @flashcard.vocabularies.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class VocabulariesController < ApplicationController
   # GET /vocabularies/1
   # GET /vocabularies/1.json
   def show
-    @vocabulary = Vocabulary.find(params[:id])
+    @vocabulary = @flashcard.vocabularies.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,7 @@ class VocabulariesController < ApplicationController
 
   # GET /vocabularies/1/edit
   def edit
-    @vocabulary = Vocabulary.find(params[:id])
+    @vocabulary = @flashcard.vocabularies.find(params[:id])
   end
 
   # POST /vocabularies
@@ -46,7 +47,7 @@ class VocabulariesController < ApplicationController
 
       if @vocabulary.save
         flash[:success] = 'Vocabulary was successfully created.'
-        redirect_to flashcard_vocabulary_path(@flashcard, @vocabulary)
+        redirect_to language_flashcard_vocabulary_path(@language, @flashcard, @vocabulary)
       else
         render "new"
       end
@@ -59,7 +60,7 @@ class VocabulariesController < ApplicationController
 
       if @vocabulary.update_attributes(params[:vocabulary])
         flash[:success] = 'Vocabulary was successfully updated.'
-        redirect_to flashcard_vocabulary_path(@flashcard, @vocabulary)
+        redirect_to language_flashcard_vocabulary_path(@language, @flashcard, @vocabulary)
       else
         render "edit"
       end
@@ -70,9 +71,9 @@ class VocabulariesController < ApplicationController
   def destroy
     @vocabulary = Vocabulary.find(params[:id])
     @vocabulary.destroy
-	flash[:success] = 'Flashcard destroyed'
+	flash[:success] = 'Vocabulary destroyed'
 
-    redirect_to flashcard_vocabularies_path(@flashcard)
+    redirect_to language_flashcard_vocabularies_path(@language, @flashcard)
   end
   
 private
@@ -82,6 +83,11 @@ private
   	if @flashcard.nil? then raise "No flashcard does exist for this vocabulary." end
   end
   
+  def get_language
+  	@language = Language.find(params[:language_id])
+  	if @language.nil? then raise "No language does exist for this flashcard." end
+  end
   
-
+  
+  
 end

@@ -7,9 +7,13 @@
 
 <p>
   <b>Category:</b>
-  <%= Category.find(@vocabulary.category_id).name %>
+<% if @vocabulary.category_id %>
+    	<%= Category.find(@vocabulary.category_id).name %>
+    <% else %>
+    (None)
+    <% end %>
 </p>
 
 
-<%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, @vocabulary) %> |
-<%= link_to 'Back', flashcard_vocabularies_path(@flashcard) %>
+<%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, @vocabulary) %> |
+<%= link_to 'Back', language_flashcard_vocabularies_path(@language, @flashcard) %>

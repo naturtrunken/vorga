@@ -12,15 +12,19 @@
 <% @vocabularies.each do |vocabulary| %>
   <tr>
     <td><%= vocabulary.id %></td>
-    <td><%= Category.find(vocabulary.category_id).name %></td>
-    <td><%= link_to 'Show', flashcard_vocabulary_path(@flashcard, vocabulary) %></td>
-    <td><%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, vocabulary) %></td>
-    <td><%= link_to 'Destroy', flashcard_vocabulary_path(@flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %></td>
+    <td><% if vocabulary.category_id %>
+    	<%= Category.find(vocabulary.category_id).name %>
+    <% else %>
+    (None)
+    <% end %></td>
+    <td><%= link_to 'Show', language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %></td>
+    <td><%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %></td>
+    <td><%= link_to 'Destroy', language_flashcard_vocabulary_path(@language, @flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Vocabulary', new_flashcard_vocabulary_path(@flashcard) %><br/>
-<%= link_to 'Back to the flashcard sets', flashcards_path %>
+<%= link_to 'New Vocabulary', new_language_flashcard_vocabulary_path(@language, @flashcard) %><br/>
+<%= link_to 'Back to the flashcard sets', language_flashcards_path(@language) %>

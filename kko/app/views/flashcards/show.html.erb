@@ -16,12 +16,12 @@
   <b>Vocabularies:</b>
   <ul>
 <% @flashcard.vocabularies.each do |vocabulary| %>
- <li><%= vocabulary.id %> <%= link_to 'Edit', edit_flashcard_vocabulary_path(@flashcard, vocabulary) %></li>
+ <li><%= vocabulary.id %> <%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %></li>
 <% end %>
   </ul>
 </p>
 
 
 
-<%= link_to 'Edit', edit_flashcard_path(@flashcard) %> |
-<%= link_to 'Back', flashcards_path %>
+<%= link_to 'Edit', edit_language_flashcard_path(@language, @flashcard) %> |
+<%= link_to 'Back', language_flashcards_path(@language) %>

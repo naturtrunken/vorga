@@ -1,10 +1,12 @@
 Kko::Application.routes.draw do
 
-  resources :categories
-
-  resources :flashcards do
-    resources :vocabularies
+  resources :languages do
+    resources :flashcards do
+      resources :vocabularies
+    end
   end
+  
+  resources :categories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,5 +1,6 @@
 class Flashcard < ActiveRecord::Base
 	attr_accessible :title, :desc
 	
-	has_many :vocabularies
+	belongs_to :language
+	has_many :vocabularies, dependent: :destroy
 end
