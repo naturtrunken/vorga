@@ -47,7 +47,7 @@ class VocabulariesController < ApplicationController
 
       if @vocabulary.save
         flash[:success] = 'Vocabulary was successfully created.'
-        redirect_to language_flashcard_path(@language, @flashcard)
+        redirect_to new_language_flashcard_vocabulary_path(@language, @flashcard)
       else
         render "new"
       end

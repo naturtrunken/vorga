@@ -7,7 +7,6 @@
     <th></th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @language.flashcards.each do |flashcard| %>
@@ -15,7 +14,6 @@
     <td><%= flashcard.title %></td>
     <td><%= flashcard.desc %></td>
     <td><%= link_to 'Show flashcart', language_flashcard_path(@language, flashcard) %></td>
-    <td><%= link_to 'Show vocabularies in this flashcard', language_flashcard_vocabularies_path(@language, flashcard) %></td>
     <td><%= link_to 'Edit', edit_language_flashcard_path(@language, flashcard) %></td>
     <td><%= link_to 'Destroy', language_flashcard_path(@language, flashcard), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
