@@ -59,7 +59,7 @@ class LogsController < ApplicationController
   def update
     @log = @flashcard.logs.find(params[:id])
    
-    if @log.update_attributes(params[:vocabulary])
+    if @log.update_attributes(params[:log])
         flash[:success] = 'Log was successfully updated.'
         redirect_to language_flashcard_path(@language, @flashcard)
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725185652) do
+ActiveRecord::Schema.define(:version => 20120731084228) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120725185652) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "flashcard_id"
+    t.integer  "direction"
   end
 
   create_table "vocabularies", :force => true do |t|

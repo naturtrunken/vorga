@@ -19,6 +19,10 @@
     <%= f.label :end %><br />
     <%= f.date_select :end %>
   </div>
+  <div class="field">
+    <%= f.label :direction, 'Direction (1 => Foreign language to native language)	' %><br />
+    <%= f.number_field :direction %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
