@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :vocabulary_id %><br />
+    <% if @log.direction == 1 then %>
     <%= select('lognote', 'vocabulary_id', @flashcard.vocabularies.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+	<% else %>
+    <%= select('lognote', 'vocabulary_id', @flashcard.vocabularies.all.collect {|p| [ p.translation, p.id ] }, {:include_blank => 'None'}) %>	
+	<% end %>
   </div>
   <div class="field">
     <%= f.label :failed %><br />
