@@ -33,17 +33,20 @@
 
 <p>
   <b>Vocabularies:</b>
-  <ul>
-<% @flashcard.vocabularies.each do |vocabulary| %>
- <li><%= vocabulary.id %>
- <%= vocabulary.name %>
- <%= vocabulary.translation %>
- (<%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %> |
- <%= link_to 'Destroy', language_flashcard_vocabulary_path(@language, @flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %>)</li>
-<% end %>
-  </ul>
 </p>
 
-<%= link_to 'New Vocabulary', new_language_flashcard_vocabulary_path(@language, @flashcard) %>
+<table>
+<% @flashcard.vocabularies.each do |vocabulary| %>
+ <tr>
+  <td><%= vocabulary.id %></td>
+  <td><%= vocabulary.name %></td>
+  <td><%= vocabulary.translation %></td>
+  <td><%= link_to 'Edit', edit_language_flashcard_vocabulary_path(@language, @flashcard, vocabulary) %> |
+ <%= link_to 'Destroy', language_flashcard_vocabulary_path(@language, @flashcard, vocabulary), confirm: 'Are you sure?', method: :delete %></td>
+ </tr>
+<% end %>
+</table>
+
+<br/><%= link_to 'New Vocabulary', new_language_flashcard_vocabulary_path(@language, @flashcard) %>
 
 
