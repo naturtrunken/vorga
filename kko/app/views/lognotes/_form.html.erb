@@ -15,8 +15,10 @@
     <%= f.label :vocabulary_id %><br />
     <% if @log.direction == 1 then %>
     <%= select('lognote', 'vocabulary_id', @flashcard.vocabularies.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+    <%= hidden_field_tag('lognote[direction]', '1') %>
 	<% else %>
     <%= select('lognote', 'vocabulary_id', @flashcard.vocabularies.all.collect {|p| [ p.translation, p.id ] }, {:include_blank => 'None'}) %>	
+    <%= hidden_field_tag('lognote[direction]', '2') %>
 	<% end %>
   </div>
   <div class="field">
