@@ -48,7 +48,7 @@ class LognotesController < ApplicationController
 
     if @lognote.save
         flash[:success] = 'Lognote was successfully created.'
-        redirect_to language_flashcard_log_path(@language, @flashcard, @log)
+        redirect_to new_language_flashcard_log_lognote_path(@language, @flashcard, @log)
     else
         render "new"
     end
