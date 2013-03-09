@@ -1,5 +1,7 @@
 <h1>New vocabulary</h1>
 
+<p>This flashcard set contains currently <%= @flashcard.vocabularies.count %> vocabularies.</p>
+
 <%= render 'form' %>
 
 <%= link_to 'Back', language_flashcard_path(@language, @flashcard) %>
